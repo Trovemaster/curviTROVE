@@ -1,0 +1,21 @@
+./p_phi_grid.pl 0 1 0 >so2_p_phi_e_v0_j40_pcossin.dat
+./p_phi_grid.pl 2 1 0 >so2_p_phi_e_v1_j40_pcossin.dat
+./p_phi_grid.pl 3 1 0 >so2_p_phi_e_v2_j40_pcossin.dat
+./p_phi_grid.pl 4 1 0 >so2_p_phi_e_v3_j40_pcossin.dat
+
+./p_phi_grid.pl 0 2 0 >so2_p_phi_e_v0_j40_sincosp.dat
+./p_phi_grid.pl 2 2 0 >so2_p_phi_e_v1_j40_sincosp.dat
+./p_phi_grid.pl 3 2 0 >so2_p_phi_e_v2_j40_sincosp.dat
+./p_phi_grid.pl 4 2 0 >so2_p_phi_e_v3_j40_sincosp.dat
+
+
+
+./p_phi_grid.pl 0 1 1 >so2_ip_phi_e_v0_j40_pcossin.dat
+./p_phi_grid.pl 2 1 1 >so2_ip_phi_e_v1_j40_pcossin.dat
+./p_phi_grid.pl 3 1 1 >so2_ip_phi_e_v2_j40_pcossin.dat
+./p_phi_grid.pl 4 1 1 >so2_ip_phi_e_v3_j40_pcossin.dat
+
+./p_phi_grid.pl 0 2 1 >so2_ip_phi_e_v0_j40_sincosp.dat
+./p_phi_grid.pl 2 2 1 >so2_ip_phi_e_v1_j40_sincosp.dat
+./p_phi_grid.pl 3 2 1 >so2_ip_phi_e_v2_j40_sincosp.dat
+./p_phi_grid.pl 4 2 1 >so2_ip_phi_e_v3_j40_sincosp.dat

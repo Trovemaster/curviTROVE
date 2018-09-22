@@ -1,0 +1,709 @@
+(  CALCULATION OF VIBRATION ENERGIES FOR XY2 MOLECULE )
+
+(  SO2  PES AMES1                                     )
+
+(  2014                                               )
+
+
+
+PTorder   0   (Max Perturbation order )
+KinOrder  6  (Max order in the kinetic energy expansion)
+PotOrder  8  (Max order in the potential energy expansion)
+
+
+Natoms 3      (Number of atoms)
+Nmodes 3      (Number of modes = 3*Natoms-6)
+
+
+(ACTIVE SPACE CUTOFFS:)
+
+PRIMITIVES
+  Npolyads      12           (how many polyads we calculate)
+  enercut        80000.      (energy cut in the primitive matrix for the diagonalization)
+END
+
+
+CONTRACTION
+  Npolyads       12      (how many polyads in the contracted represent.)
+  enercut       30000.    (energy cut in the primitive matrix for the diagonalization)
+  degeneracy    1e-2       (threashold to define degeneracy)
+  sample_points   110
+  sample_attempts 500
+  symm_toler      1e-3
+  coeff_thresh    1e-14   (  rotsym        euler )
+END
+
+
+
+
+verbose 3
+
+
+
+
+dstep 0.01   (finite difference element for each mode )
+
+
+COORDS linear (type of the internal coordinates: linear or local)
+TRANSFORM  r-rho
+MOLTYPE XY2   (Identifying type of the Molecule (e.g. XY3))
+MOLECULE SO2  (Identifying the Molecule, e.g. PH3, BiH3 - optional)
+REFER-CONF  NON-RIGID  (Reference configuarion: RIGID or NON-RIGID)
+SYMGROUP C(M)
+
+
+
+
+ZMAT
+    S   0  0  0  0   31.963294
+    O   1  0  0  0   15.990526
+    O   1  2  0  0   15.990526
+end
+
+
+     (type     chi_kin   chi_pot)
+
+BASIS
+ 0,'JKtau', Jrot 0
+ 1,'numerov','linear', 'morse', range 0, 12, resc 2.0, points 2000,borders -0.3,1.00
+ 1,'numerov','linear', 'morse', range 0, 12, resc 2.0, points 2000,borders -0.3,1.00
+ 2,'numerov','linear', 'linear',range 0, 24, resc 1.0, points 4000,borders  20.0,120.0 deg
+END
+
+
+
+
+CHECK_POINT
+HAMILTONIAN read    (the basis set can be generated from scratch (CREATE) or read (RESTORE) from the check point file)
+EIGENFUNC   none    (the eigenfunctions can be stored (SAVE) or read (RESTORE))
+CONTRACT    read    (the contracted eigenfunc. can be stored (SAVE) or read (RESTORE))
+matelem     save    (save vib. matrix elements of the kinetic part)
+END
+
+
+
+
+DIAGONALIZER
+SYEVR
+ res pcossin 40 1 40 179 deg
+end
+
+
+
+
+EQUILIBRIUM
+re13       1         1.4310858225
+re13       1         1.4310858225
+alphae     0         119.3193505  DEG
+end
+
+
+
+
+SPECPARAM
+aa         0         2.00
+aa         0         2.00
+END
+
+
+
+
+POTEN
+NPARAM  235
+POT_TYPE  poten_so2_ames1   (NAS AMES-II)
+COEFF  powers  (powers or list)
+r12ref    0 0 0  1       1.4310858225
+aref      0 0 0  1       2.0825155289
+alpha2    0 0 0  1       0.3227981219
+De1       0 0 0  1        233156.0000
+De2       0 0 0  1          5250.0000
+Ae1       0 0 0  1         56000.0000
+Ae2       0 0 0  1         50000.0000
+edamp2    0 0 0  1            -1.5000
+edamp4    0 0 0  1            -3.0000
+edamp5    0 0 0  1            -0.1000
+edamp6    0 0 0  1            -0.3000
+Emin      0 0 0  1  -7.130315370150005E-005
+Rmin      0 0 0  1  0.1431085822569200D+01
+rminbohr  0 0 0  1  0.2704360070795864D+01
+alpha     0 0 0  1  0.3227981218900000D+00
+rref      0 0 0  1  0.2704360070708615D+01
+f     0    0    0 0 -0.713031537015D-04
+f     0    0    1 0  0.408977453845D-10
+f     0    0    2 0 -0.522797104175D-02
+f     0    0    3 0 -0.358681312180D-01
+f     0    0    4 0 -0.454158478999D-01
+f     0    0    5 0 -0.379299009871D-01
+f     0    0    6 0  0.412411201457D+00
+f     0    0    7 0 -0.643648832202D+00
+f     0    0    8 0  0.224556570717D+00
+f     1    0    0 0 -0.202859763778D-09
+f     1    0    1 0 -0.654790074209D-01
+f     1    0    2 0 -0.259064585248D+00
+f     1    0    3 0 -0.160755580994D-01
+f     1    0    4 0 -0.185772026718D+00
+f     1    0    5 0 -0.221700345867D+00
+f     1    0    6 0  0.429941331190D+00
+f     1    0    7 0  0.912107069084D+00
+f     1    0    8 0 -0.942528184327D+00
+f     1    1    0 0 -0.411154997746D-02
+f     1    1    1 0  0.183837338673D+00
+f     1    1    2 0  0.329416951897D+00
+f     1    1    3 0  0.490121831456D+00
+f     1    1    4 0  0.119559213115D+00
+f     1    1    5 0 -0.440245383372D+01
+f     1    1    6 0  0.543207330872D+00
+f     1    1    7 0  0.641146000793D+00
+f     1    1    8 0  0.184765698398D+02
+f     2    0    0 0  0.784750022027D+00
+f     2    0    1 0  0.121761693981D+00
+f     2    0    2 0 -0.111772420818D-01
+f     2    0    3 0 -0.530063090089D-01
+f     2    0    4 0  0.653338506754D+00
+f     2    0    5 0 -0.322010070188D+00
+f     2    0    6 0 -0.830813797343D+01
+f     2    0    7 0  0.514484675308D+01
+f     2    0    8 0  0.753586524790D+01
+f     2    1    0 0 -0.720575891753D-01
+f     2    1    1 0 -0.512265117101D+00
+f     2    1    2 0 -0.580744483196D+00
+f     2    1    3 0 -0.135283276926D+01
+f     2    1    4 0 -0.142030257665D+00
+f     2    1    5 0  0.646601918156D+00
+f     2    1    6 0 -0.152968316025D+01
+f     2    1    7 0  0.238089851189D+02
+f     2    1    8 0 -0.110762807343D+03
+f     2    2    0 0  0.269200097931D+01
+f     2    2    1 0  0.429341073614D+00
+f     2    2    2 0  0.136628432885D+01
+f     2    2    3 0  0.210701704111D+02
+f     2    2    4 0 -0.170901537775D+02
+f     2    2    5 0  0.484076799302D+02
+f     2    2    6 0  0.431805771816D+03
+f     2    2    7 0 -0.713417997252D+03
+f     2    2    8 0  0.535670245018D+03
+f     3    0    0 0 -0.244697443647D+01
+f     3    0    1 0 -0.191117541195D+00
+f     3    0    2 0 -0.573775292315D-01
+f     3    0    3 0 -0.726296775639D+00
+f     3    0    4 0 -0.556597874057D+01
+f     3    0    5 0  0.927729920069D+01
+f     3    0    6 0  0.129175591921D+02
+f     3    0    7 0 -0.517821764607D+02
+f     3    0    8 0  0.288318768823D+02
+f     3    1    0 0  0.539546985732D-01
+f     3    1    1 0  0.903323664499D+00
+f     3    1    2 0  0.122320777509D+01
+f     3    1    3 0 -0.422118949967D+01
+f     3    1    4 0  0.134404850814D+02
+f     3    1    5 0  0.134500012092D+03
+f     3    1    6 0 -0.183698726816D+03
+f     3    1    7 0  0.119326551572D+03
+f     3    1    8 0 -0.483506287865D+02
+f     3    2    0 0 -0.409643812287D+01
+f     3    2    1 0  0.372576322314D-01
+f     3    2    2 0  0.408339562607D+01
+f     3    2    3 0  0.178124386333D+02
+f     3    2    4 0 -0.234651478791D+02
+f     3    2    5 0 -0.516586375463D+03
+f     3    2    6 0 -0.480408814681D+03
+f     3    2    7 0  0.837385529130D+03
+f     3    3    0 0  0.868531514716D+00
+f     3    3    1 0 -0.539100662317D+02
+f     3    3    2 0 -0.147241292106D+03
+f     3    3    3 0  0.259119699883D+02
+f     3    3    4 0  0.134822882302D+04
+f     3    3    5 0  0.164627995701D+03
+f     3    3    6 0  0.673253500397D+03
+f     4    0    0 0  0.482013640188D+01
+f     4    0    1 0 -0.184244164953D+00
+f     4    0    2 0 -0.935505680749D+00
+f     4    0    3 0  0.127387489031D+02
+f     4    0    4 0  0.119451204968D+02
+f     4    0    5 0 -0.445737409553D+02
+f     4    0    6 0  0.376161852607D+02
+f     4    0    7 0  0.500591487117D+02
+f     4    0    8 0 -0.228586941598D+02
+f     4    1    0 0 -0.223386751788D+00
+f     4    1    1 0 -0.105429194884D+01
+f     4    1    2 0  0.239840487294D+01
+f     4    1    3 0  0.239582710226D+02
+f     4    1    4 0 -0.409608433675D+02
+f     4    1    5 0 -0.282284002511D+03
+f     4    1    6 0  0.875628685173D+03
+f     4    1    7 0 -0.777533314963D+02
+f     4    2    0 0  0.522519205309D+01
+f     4    2    1 0 -0.328748871344D+01
+f     4    2    2 0 -0.697484709535D+02
+f     4    2    3 0 -0.718042571692D+03
+f     4    2    4 0 -0.872395288024D+03
+f     4    2    5 0  0.249332351888D+04
+f     4    2    6 0 -0.191339761064D+04
+f     4    3    0 0  0.161597393388D+02
+f     4    3    1 0  0.123353411790D+03
+f     4    3    2 0  0.430098600821D+03
+f     4    3    3 0  0.114018044969D+03
+f     4    3    4 0 -0.721127132472D+02
+f     4    3    5 0 -0.154172852695D+04
+f     4    4    0 0  0.130298184893D+03
+f     4    4    1 0 -0.287935350340D+03
+f     4    4    2 0  0.198906276381D+04
+f     4    4    3 0  0.629277096070D+04
+f     4    4    4 0  0.123498073898D+05
+f     5    0    0 0 -0.780227303149D+01
+f     5    0    1 0 -0.898247495889D+00
+f     5    0    2 0 -0.791963103896D+01
+f     5    0    3 0 -0.359392862230D+02
+f     5    0    4 0  0.785707417750D+02
+f     5    0    5 0  0.208565998345D+03
+f     5    0    6 0 -0.353675927686D+03
+f     5    0    7 0 -0.745296716403D+02
+f     5    1    0 0  0.379013145283D+00
+f     5    1    1 0 -0.154313558853D+01
+f     5    1    2 0  0.208901640791D+02
+f     5    1    3 0 -0.134287235271D+02
+f     5    1    4 0  0.114073896118D+03
+f     5    1    5 0 -0.144183012108D+04
+f     5    1    6 0 -0.546798313375D+03
+f     5    2    0 0  0.591776262262D+01
+f     5    2    1 0  0.249428266253D+02
+f     5    2    2 0  0.255775066212D+03
+f     5    2    3 0  0.248538775740D+04
+f     5    2    4 0  0.128717815256D+04
+f     5    2    5 0 -0.167102530569D+04
+f     5    3    0 0 -0.107581760951D+03
+f     5    3    1 0  0.454127592708D+03
+f     5    3    2 0 -0.150003658743D+04
+f     5    3    3 0 -0.404226789820D+04
+f     5    3    4 0 -0.940665043134D+04
+f     5    4    0 0 -0.527792373980D+03
+f     5    4    1 0 -0.137784966144D+04
+f     5    4    2 0 -0.681700574382D+04
+f     5    4    3 0 -0.101219261795D+05
+f     5    5    0 0  0.381170968011D+04
+f     5    5    1 0  0.254672299039D+04
+f     5    5    2 0  0.274167994674D+05
+f     6    0    0 0  0.129922934507D+02
+f     6    0    1 0  0.625619686480D+01
+f     6    0    2 0  0.416507256942D+02
+f     6    0    3 0 -0.925546977857D+02
+f     6    0    4 0 -0.330390109671D+03
+f     6    0    5 0  0.196722591269D+02
+f     6    0    6 0  0.557855528316D+03
+f     6    1    0 0 -0.110669752765D-01
+f     6    1    1 0 -0.346441546813D+02
+f     6    1    2 0 -0.349101005969D+03
+f     6    1    3 0  0.289070084084D+02
+f     6    1    4 0  0.272511389831D+03
+f     6    1    5 0  0.252638659673D+04
+f     6    2    0 0  0.886410258487D+02
+f     6    2    1 0  0.322607846352D+03
+f     6    2    2 0  0.755449283681D+03
+f     6    2    3 0 -0.205362540752D+04
+f     6    2    4 0  0.445684187809D+04
+f     6    3    0 0 -0.303036232211D+03
+f     6    3    1 0 -0.162113596348D+04
+f     6    3    2 0  0.440837734252D+04
+f     6    3    3 0  0.153748133317D+05
+f     6    4    0 0 -0.943489621483D+02
+f     6    4    1 0  0.311167894665D+04
+f     6    4    2 0 -0.758888189987D+04
+f     6    5    0 0 -0.168411996691D+04
+f     6    5    1 0  0.120911838401D+04
+f     6    6    0 0  0.973625225207D+04
+f     7    0    0 0 -0.191679194948D+02
+f     7    0    1 0  0.498232087891D+01
+f     7    0    2 0 -0.355632048553D+02
+f     7    0    3 0  0.241729433986D+03
+f     7    0    4 0  0.238446857904D+03
+f     7    0    5 0 -0.534727247876D+03
+f     7    1    0 0 -0.363588008753D+01
+f     7    1    1 0  0.140726272295D+03
+f     7    1    2 0  0.761543277313D+03
+f     7    1    3 0  0.531439889094D+03
+f     7    1    4 0 -0.133897609278D+04
+f     7    2    0 0 -0.270986501404D+03
+f     7    2    1 0 -0.226033266730D+04
+f     7    2    2 0 -0.438904125346D+04
+f     7    2    3 0 -0.469551459823D+04
+f     7    3    0 0  0.208468379570D+04
+f     7    3    1 0  0.234500083948D+04
+f     7    3    2 0 -0.140788037407D+04
+f     7    4    0 0 -0.134130032351D+04
+f     7    4    1 0 -0.221377601978D+04
+f     7    5    0 0 -0.870273843009D+04
+f     8    0    0 0  0.139205519064D+02
+f     8    0    1 0 -0.332459848355D+02
+f     8    0    2 0 -0.368308000901D+02
+f     8    0    3 0  0.409268723244D+02
+f     8    0    4 0  0.683943118870D+02
+f     8    1    0 0  0.193636722960D+01
+f     8    1    1 0 -0.131853344270D+03
+f     8    1    2 0 -0.286012562853D+03
+f     8    1    3 0 -0.966237188680D+03
+f     8    2    0 0  0.186318449603D+03
+f     8    2    1 0  0.380988276628D+04
+f     8    2    2 0  0.364936133701D+04
+f     8    3    0 0 -0.277116203913D+04
+f     8    3    1 0 -0.551703901608D+04
+f     8    4    0 0  0.655397668738D+04
+end
+
+
+
+
+
+
+Warning: number of dihedrals is not (Natoms-3):        0       2
+/Molecular parameters:
+Number of atoms (Natoms):    3
+Number of bonds (Nbonds):    2
+Number of angles (Nangles):    1
+Number of dihedral angles (Ndihedrals):    0
+The molecular type (Moltype):XY2
+The kinetic   coordinates (Molecule): LINEAR LINEAR LINEAR
+The potential coordinates (Molecule): MORSE MORSE LINEAR
+The externalF coordinates (Molecule): LINEAR LINEAR LINEAR
+fdstep:      0.010000      0.010000      0.010000
+The coordinates type (internal_coords):LINEAR
+The coordinate-transformation type (coords_transform):R-RHO
+Bonds  connections are 
+   1 -    2   1
+   2 -    3   1
+Angles  connections are 
+   1 -    3   1   2
+Angles  connections are 
+   1 -    3   1   2
+The coordinate   3 is given explicitly by 1d numerical table of size    4000
+
+Calculations control parameters:
+Maximal order of the kinetic   energy expansion (NKinOrder):    6
+Maximal order of the potential energy expansion (NPotOrder):    8
+A small number:    0.2220446049D-15
+
+MLinitialize_molec/start: molecular and potential parameters
+MLinitialize_molec/end
+ML_b0_XY2/start
+ML_b0_XY2/end
+
+MLequilibrium_xyz_1d/start: a0 equilibrium cartesian coords
+ML_b0_XY2/start
+ML_b0_XY2/end
+MLequilibrium_xyz_1d/end
+
+
+ Memory Report:
+ Active Arrays                                        size (Gb)
+ trove%Amatrho                                         0.1610E-02                
+ trove%dAmatrho                                        0.4829E-02                
+ trove%Bmatrho                                         0.1610E-02                
+ trove%dBmatrho                                        0.3219E-02                
+ trove%db0                                             0.1610E-02                
+ g_vib                                                 0.1503E-01                
+ g_rot                                                 0.1503E-01                
+ g_cor                                                 0.1503E-01                
+ pseudo                                                0.1669E-02                
+ Total memory   =                                     0.06075620 Gb
+ Maximal memory =                                     0.06075620 Gb (        100000.0)
+
+ (        6 arrays contributing less than 1% are not shown)
+
+
+FLinitilize_Potential/start
+
+Expansion of the external field ...
+
+
+ Memory Report:
+ Active Arrays                                        size (Gb)
+ trove%Amatrho                                         0.1610E-02                
+ trove%dAmatrho                                        0.4829E-02                
+ trove%Bmatrho                                         0.1610E-02                
+ trove%dBmatrho                                        0.3219E-02                
+ trove%db0                                             0.1610E-02                
+ g_vib                                                 0.1503E-01                
+ g_rot                                                 0.1503E-01                
+ g_cor                                                 0.1503E-01                
+ pseudo                                                0.1669E-02                
+ poten                                                 0.2683E-02                
+ trove%g_vib%me                                        0.2347E-02                
+ trove%g_rot%me                                        0.2347E-02                
+ trove%g_cor%me                                        0.2347E-02                
+ Total memory   =                                     0.07127486 Gb
+ Maximal memory =                                     0.07127486 Gb (        100000.0)
+
+ (       11 arrays contributing less than 1% are not shown)
+
+
+
+Symmetry of the contracted solution, class:   0
+      i       ener         deg  symmetry  j   k  tau  quanta:
+      1        0.00000000   1   1  A      0   0   0   0   0   0
+
+
+Symmetrization...
+
+Generating the contracted active space...
+
+Distributing the degenerate components...
+Size of contracted active space is      140
+
+Counting the total number of primitive components...
+
+symmetrization...
+Counting the total number of irr. representations...
+Generating the irr. representations...
+
+Total number of irr. representations:        140
+
+Correspondence between primitive and symmetrized (global) quantum numbers ...
+
+Size of the primitive basis set :         1183
+Total number of irr. representations:        140
+
+
+ Memory Report:
+ Active Arrays                                        size (Gb)
+ trove%Amatrho                                         0.1610E-02                
+ trove%dAmatrho                                        0.4829E-02                
+ trove%Bmatrho                                         0.1610E-02                
+ trove%dBmatrho                                        0.3219E-02                
+ trove%db0                                             0.1610E-02                
+ g_vib                                                 0.1503E-01                
+ g_rot                                                 0.1503E-01                
+ g_cor                                                 0.1503E-01                
+ pseudo                                                0.1669E-02                
+ poten                                                 0.2683E-02                
+ trove%g_vib%me                                        0.2347E-02                
+ trove%g_rot%me                                        0.2347E-02                
+ trove%g_cor%me                                        0.2347E-02                
+ me%fields%coeff                                       0.3996E-02                
+ Total memory   =                                     0.07530359 Gb
+ Maximal memory =                                     0.07530571 Gb (        100000.0)
+
+ (       22 arrays contributing less than 1% are not shown)
+
+
+Rotational part of the Kinetic energy operator...
+
+Coriolis part of the Kinetic energy operator...
+
+Vibrational kinetic part...
+
+Number of gvib terms  =           28
+
+Potential function...
+
+Number of pot terms  =           45
+
+              Timing data at 2015/10/28 05:07:38
+
+                                            Total time (seconds)  Self time (seconds)
+ Timer                               Calls  --------------------  -------------------
+ -----                               -----       Real       CPU        Real       CPU
+
+ TROVE                          *       1.        0.8       6.8         0.1       0.1
+ FLcheck_point_Hamiltonian              3.        0.3       0.3         0.3       0.3
+ Primitive matelements                  1.        0.0       0.0         0.0       0.0
+ Contracted matelements-class   *       1.        0.4       6.4         0.4       6.4
+
+ (  4 timers contributing less than 1% are not shown)
+
+
+Rotational part...
+
+Size of the contracted matrix  =     140
+
+Calculating the symmetrized mat. elements...
+
+Prepare the lower part of the matrix...
+...and the upper part...
+Diagonalization...
+
+
+Size of the symmetrized hamiltonian =     140 Symmetry =  A  
+Full diagonalization...
+
+Zero-point-energy is       -1068.738439
+
+Variational solution - irreducible representation
+  Gamma    i       value             j  k  t   quanta
+  A        1      0.000000   ( A  ;  0  0  0) ( A   A  ;   0   0   0)      0.69 (   0   0   0)
+  A        2    396.824215   ( A  ;  0  0  0) ( A   A  ;   0   0   0)      0.59 (   0   0   0)
+  A        3    773.193611   ( A  ;  0  0  0) ( A   A  ;   0   0   1)      0.50 (   0   0   1)
+  A        4   1138.199311   ( A  ;  0  0  0) ( A   A  ;   0   1   0)      0.64 (   0   1   0)
+  A        5   1142.506277   ( A  ;  0  0  0) ( A   A  ;   0   0   1)      0.51 (   0   0   1)
+  A        6   1398.007202   ( A  ;  0  0  0) ( A   A  ;   1   0   0)      0.69 (   1   0   0)
+  A        7   1530.228787   ( A  ;  0  0  0) ( A   A  ;   0   1   0)      0.58 (   0   1   0)
+  A        8   1545.875159   ( A  ;  0  0  0) ( A   A  ;   0   0   2)      0.53 (   0   0   2)
+  A        9   1794.502420   ( A  ;  0  0  0) ( A   A  ;   1   0   0)      0.59 (   1   0   0)
+  A       10   1912.502531   ( A  ;  0  0  0) ( A   A  ;   0   1   1)      0.49 (   0   1   1)
+  A       11   2007.116401   ( A  ;  0  0  0) ( A   A  ;   0   0   3)      0.48 (   0   0   3)
+  A       12   2179.017406   ( A  ;  0  0  0) ( A   A  ;   1   0   1)      0.53 (   1   0   1)
+  A       13   2269.270708   ( A  ;  0  0  0) ( A   A  ;   1   1   0)      0.62 (   1   1   0)
+  A       14   2317.675561   ( A  ;  0  0  0) ( A   A  ;   0   1   1)      0.53 (   0   1   1)
+  A       15   2523.207582   ( A  ;  0  0  0) ( A   A  ;   2   0   0)      0.66 (   2   0   0)
+  A       16   2525.884482   ( A  ;  0  0  0) ( A   A  ;   0   0   3)      0.52 (   0   0   3)
+  A       17   2577.866488   ( A  ;  0  0  0) ( A   A  ;   1   0   1)      0.51 (   1   0   1)
+  A       18   2662.402755   ( A  ;  0  0  0) ( A   A  ;   1   1   0)      0.59 (   1   1   0)
+  A       19   2779.305913   ( A  ;  0  0  0) ( A   A  ;   0   1   2)      0.56 (   0   1   2)
+  A       20   2784.887638   ( A  ;  0  0  0) ( A   A  ;   1   1   0)      0.70 (   1   1   0)
+  A       21   2918.720345   ( A  ;  0  0  0) ( A   A  ;   2   0   0)      0.59 (   2   0   0)
+  A       22   3027.189603   ( A  ;  0  0  0) ( A   A  ;   1   0   2)      0.57 (   1   0   2)
+  A       23   3072.904989   ( A  ;  0  0  0) ( A   A  ;   1   1   1)      0.50 (   1   1   1)
+  A       24   3099.519351   ( A  ;  0  0  0) ( A   A  ;   0   0   4)      0.54 (   0   0   4)
+  A       25   3183.246890   ( A  ;  0  0  0) ( A   A  ;   1   1   0)      0.59 (   1   1   0)
+  A       26   3306.436256   ( A  ;  0  0  0) ( A   A  ;   0   1   3)      0.55 (   0   1   3)
+  A       27   3324.424624   ( A  ;  0  0  0) ( A   A  ;   2   0   1)      0.54 (   2   0   1)
+  A       28   3395.994362   ( A  ;  0  0  0) ( A   A  ;   2   1   0)      0.59 (   2   1   0)
+  A       29   3540.074837   ( A  ;  0  0  0) ( A   A  ;   1   1   1)      0.50 (   1   1   1)
+  A       30   3540.761468   ( A  ;  0  0  0) ( A   A  ;   1   0   3)      0.54 (   1   0   3)
+  A       31   3586.076213   ( A  ;  0  0  0) ( A   A  ;   1   1   1)      0.57 (   1   1   1)
+  A       32   3642.876524   ( A  ;  0  0  0) ( A   A  ;   3   0   0)      0.63 (   3   0   0)
+  A       33   3728.178748   ( A  ;  0  0  0) ( A   A  ;   0   0   5)      0.53 (   0   0   5)
+  A       34   3779.669658   ( A  ;  0  0  0) ( A   A  ;   2   0   1)      0.52 (   2   0   1)
+  A       35   3812.000882   ( A  ;  0  0  0) ( A   A  ;   2   1   0)      0.60 (   2   1   0)
+  A       36   3898.622739   ( A  ;  0  0  0) ( A   A  ;   3   0   0)      0.67 (   3   0   0)
+  A       37   3899.728426   ( A  ;  0  0  0) ( A   A  ;   0   1   4)      0.56 (   0   1   4)
+  A       38   4030.426176   ( A  ;  0  0  0) ( A   A  ;   1   1   1)      0.50 (   1   1   1)
+  A       39   4054.704658   ( A  ;  0  0  0) ( A   A  ;   3   0   0)      0.60 (   3   0   0)
+  A       40   4082.874519   ( A  ;  0  0  0) ( A   A  ;   1   1   2)      0.58 (   1   1   2)
+  A       41   4119.342067   ( A  ;  0  0  0) ( A   A  ;   1   0   4)      0.59 (   1   0   4)
+  A       42   4161.664367   ( A  ;  0  0  0) ( A   A  ;   1   2   0)      0.71 (   1   2   0)
+  A       43   4288.442805   ( A  ;  0  0  0) ( A   A  ;   2   1   1)      0.56 (   2   1   1)
+  A       44   4307.664466   ( A  ;  0  0  0) ( A   A  ;   3   0   0)      0.43 (   3   0   0)
+  A       45   4308.601582   ( A  ;  0  0  0) ( A   A  ;   3   0   0)      0.42 (   3   0   0)
+  A       46   4416.604126   ( A  ;  0  0  0) ( A   A  ;   0   0   7)      0.55 (   0   0   7)
+  A       47   4518.867698   ( A  ;  0  0  0) ( A   A  ;   3   0   1)      0.58 (   3   0   1)
+  A       48   4536.628405   ( A  ;  0  0  0) ( A   A  ;   2   2   0)      0.61 (   2   2   0)
+  A       49   4544.673265   ( A  ;  0  0  0) ( A   A  ;   1   1   2)      0.58 (   1   1   2)
+  A       50   4561.565583   ( A  ;  0  0  0) ( A   A  ;   0   1   5)      0.58 (   0   1   5)
+  A       51   4570.262133   ( A  ;  0  0  0) ( A   A  ;   1   2   0)      0.59 (   1   2   0)
+  A       52   4707.447911   ( A  ;  0  0  0) ( A   A  ;   1   1   3)      0.59 (   1   1   3)
+  A       53   4761.163660   ( A  ;  0  0  0) ( A   A  ;   3   0   1)      0.60 (   3   0   1)
+  A       54   4765.587504   ( A  ;  0  0  0) ( A   A  ;   1   0   5)      0.61 (   1   0   5)
+  A       55   4770.727405   ( A  ;  0  0  0) ( A   A  ;   0   4   0)      0.64 (   0   4   0)
+  A       56   4853.522242   ( A  ;  0  0  0) ( A   A  ;   2   1   1)      0.50 (   2   1   1)
+  A       57   4917.139910   ( A  ;  0  0  0) ( A   A  ;   2   0   3)      0.59 (   2   0   3)
+  A       58   5013.684695   ( A  ;  0  0  0) ( A   A  ;   1   2   1)      0.62 (   1   2   1)
+  A       59   5015.978855   ( A  ;  0  0  0) ( A   A  ;   0   4   0)      0.66 (   0   4   0)
+  A       60   5027.898401   ( A  ;  0  0  0) ( A   A  ;   2   2   0)      0.61 (   2   2   0)
+  A       61   5069.327462   ( A  ;  0  0  0) ( A   A  ;   3   0   2)      0.53 (   3   0   2)
+  A       62   5137.917551   ( A  ;  0  0  0) ( A   A  ;   1   1   3)      0.60 (   1   1   3)
+  A       63   5177.419640   ( A  ;  0  0  0) ( A   A  ;   0   0   8)      0.60 (   0   0   8)
+  A       64   5247.778283   ( A  ;  0  0  0) ( A   A  ;   0   4   0)      0.61 (   0   4   0)
+  A       65   5270.904705   ( A  ;  0  0  0) ( A   A  ;   1   3   0)      0.70 (   1   3   0)
+  A       66   5296.878529   ( A  ;  0  0  0) ( A   A  ;   3   0   2)      0.56 (   3   0   2)
+  A       67   5301.066122   ( A  ;  0  0  0) ( A   A  ;   0   1   6)      0.58 (   0   1   6)
+  A       68   5421.089224   ( A  ;  0  0  0) ( A   A  ;   1   1   4)      0.57 (   1   1   4)
+  A       69   5480.748026   ( A  ;  0  0  0) ( A   A  ;   0   4   0)      0.61 (   0   4   0)
+  A       70   5489.818137   ( A  ;  0  0  0) ( A   A  ;   1   0   6)      0.61 (   1   0   6)
+  A       71   5525.582976   ( A  ;  0  0  0) ( A   A  ;   2   1   3)      0.53 (   2   1   3)
+  A       72   5533.261791   ( A  ;  0  0  0) ( A   A  ;   2   2   0)      0.72 (   2   2   0)
+  A       73   5534.963238   ( A  ;  0  0  0) ( A   A  ;   1   2   2)      0.57 (   1   2   2)
+  A       74   5614.936814   ( A  ;  0  0  0) ( A   A  ;   2   0   4)      0.57 (   2   0   4)
+  A       75   5628.134958   ( A  ;  0  0  0) ( A   A  ;   2   2   1)      0.63 (   2   2   1)
+  A       76   5724.647853   ( A  ;  0  0  0) ( A   A  ;   1   3   0)      0.61 (   1   3   0)
+  A       77   5725.277526   ( A  ;  0  0  0) ( A   A  ;   3   0   3)      0.56 (   3   0   3)
+  A       78   5766.442945   ( A  ;  0  0  0) ( A   A  ;   3   2   0)      0.73 (   3   2   0)
+  A       79   5819.486824   ( A  ;  0  0  0) ( A   A  ;   1   1   4)      0.57 (   1   1   4)
+  A       80   5832.434960   ( A  ;  0  0  0) ( A   A  ;   0   4   1)      0.65 (   0   4   1)
+  A       81   5936.327161   ( A  ;  0  0  0) ( A   A  ;   3   0   3)      0.59 (   3   0   3)
+  A       82   5973.576840   ( A  ;  0  0  0) ( A   A  ;   4   1   0)      0.74 (   4   1   0)
+  A       83   5977.963450   ( A  ;  0  0  0) ( A   A  ;   2   2   0)      0.60 (   2   2   0)
+  A       84   6040.361468   ( A  ;  0  0  0) ( A   A  ;   0   0   9)      0.56 (   0   0   9)
+  A       85   6049.457122   ( A  ;  0  0  0) ( A   A  ;   0   4   1)      0.66 (   0   4   1)
+  A       86   6141.316910   ( A  ;  0  0  0) ( A   A  ;   0   1   8)      0.56 (   0   1   8)
+  A       87   6157.247095   ( A  ;  0  0  0) ( A   A  ;   1   2   3)      0.62 (   1   2   3)
+  A       88   6194.653960   ( A  ;  0  0  0) ( A   A  ;   5   0   0)      0.75 (   5   0   0)
+  A       89   6240.831333   ( A  ;  0  0  0) ( A   A  ;   1   1   6)      0.58 (   1   1   6)
+  A       90   6277.360036   ( A  ;  0  0  0) ( A   A  ;   1   3   1)      0.67 (   1   3   1)
+  A       91   6318.527783   ( A  ;  0  0  0) ( A   A  ;   1   0   8)      0.59 (   1   0   8)
+  A       92   6323.555408   ( A  ;  0  0  0) ( A   A  ;   2   1   4)      0.61 (   2   1   4)
+  A       93   6385.830381   ( A  ;  0  0  0) ( A   A  ;   2   2   2)      0.63 (   2   2   2)
+  A       94   6419.279118   ( A  ;  0  0  0) ( A   A  ;   3   2   1)      0.54 (   3   2   1)
+  A       95   6420.905713   ( A  ;  0  0  0) ( A   A  ;   2   0   6)      0.58 (   2   0   6)
+  A       96   6427.602118   ( A  ;  0  0  0) ( A   A  ;   0   5   0)      0.76 (   0   5   0)
+  A       97   6506.136186   ( A  ;  0  0  0) ( A   A  ;   3   0   4)      0.62 (   3   0   4)
+  A       98   6514.799824   ( A  ;  0  0  0) ( A   A  ;   2   2   1)      0.67 (   2   2   1)
+  A       99   6570.541777   ( A  ;  0  0  0) ( A   A  ;   0   4   2)      0.64 (   0   4   2)
+  A      100   6610.474167   ( A  ;  0  0  0) ( A   A  ;   4   1   1)      0.56 (   4   1   1)
+  A      101   6611.909267   ( A  ;  0  0  0) ( A   A  ;   1   1   6)      0.62 (   1   1   6)
+  A      102   6670.736282   ( A  ;  0  0  0) ( A   A  ;   4   1   0)      0.78 (   4   1   0)
+  A      103   6700.453402   ( A  ;  0  0  0) ( A   A  ;   3   0   4)      0.64 (   3   0   4)
+  A      104   6768.265268   ( A  ;  0  0  0) ( A   A  ;   0   4   2)      0.65 (   0   4   2)
+  A      105   6815.290320   ( A  ;  0  0  0) ( A   A  ;   5   0   1)      0.58 (   5   0   1)
+  A      106   6904.231748   ( A  ;  0  0  0) ( A   A  ;   1   2   4)      0.66 (   1   2   4)
+  A      107   6923.598975   ( A  ;  0  0  0) ( A   A  ;   2   3   0)      0.80 (   2   3   0)
+  A      108   6977.316906   ( A  ;  0  0  0) ( A   A  ;   1   3   2)      0.67 (   1   3   2)
+  A      109   7031.607309   ( A  ;  0  0  0) ( A   A  ;   0   5   1)      0.60 (   0   5   1)
+  A      110   7083.093656   ( A  ;  0  0  0) ( A   A  ;   0   0  11)      0.68 (   0   0  11)
+  A      111   7165.581761   ( A  ;  0  0  0) ( A   A  ;   0   1   9)      0.66 (   0   1   9)
+  A      112   7196.355950   ( A  ;  0  0  0) ( A   A  ;   2   2   2)      0.68 (   2   2   2)
+  A      113   7236.089050   ( A  ;  0  0  0) ( A   A  ;   3   3   0)      0.51 (   3   3   0)
+  A      114   7250.716501   ( A  ;  0  0  0) ( A   A  ;   3   3   0)      0.63 (   3   3   0)
+  A      115   7257.930781   ( A  ;  0  0  0) ( A   A  ;   4   1   1)      0.62 (   4   1   1)
+  A      116   7304.136895   ( A  ;  0  0  0) ( A   A  ;   2   1   6)      0.38 (   2   1   6)
+  A      117   7312.481782   ( A  ;  0  0  0) ( A   A  ;   1   0   9)      0.64 (   1   0   9)
+  A      118   7364.703059   ( A  ;  0  0  0) ( A   A  ;   2   1   5)      0.42 (   2   1   5)
+  A      119   7392.395984   ( A  ;  0  0  0) ( A   A  ;   2   0   7)      0.54 (   2   0   7)
+  A      120   7418.260013   ( A  ;  0  0  0) ( A   A  ;   1   5   0)      0.75 (   1   5   0)
+  A      121   7438.237780   ( A  ;  0  0  0) ( A   A  ;   3   2   2)      0.48 (   3   2   2)
+  A      122   7460.527202   ( A  ;  0  0  0) ( A   A  ;   3   0   6)      0.42 (   3   0   6)
+  A      123   7493.078724   ( A  ;  0  0  0) ( A   A  ;   2   3   1)      0.64 (   2   3   1)
+  A      124   7520.018926   ( A  ;  0  0  0) ( A   A  ;   4   1   2)      0.39 (   4   1   2)
+  A      125   7557.605138   ( A  ;  0  0  0) ( A   A  ;   1   1   7)      0.59 (   1   1   7)
+  A      126   7591.854255   ( A  ;  0  0  0) ( A   A  ;   4   1   2)      0.49 (   4   1   2)
+  A      127   7603.574331   ( A  ;  0  0  0) ( A   A  ;   6   0   0)      0.65 (   6   0   0)
+  A      128   7630.617175   ( A  ;  0  0  0) ( A   A  ;   6   0   0)      0.50 (   6   0   0)
+  A      129   7688.144912   ( A  ;  0  0  0) ( A   A  ;   0   4   4)      0.40 (   0   4   4)
+  A      130   7757.564209   ( A  ;  0  0  0) ( A   A  ;   5   0   2)      0.51 (   5   0   2)
+  A      131   7797.066056   ( A  ;  0  0  0) ( A   A  ;   1   2   6)      0.47 (   1   2   6)
+  A      132   7815.272086   ( A  ;  0  0  0) ( A   A  ;   0   6   0)      0.71 (   0   6   0)
+  A      133   7866.703133   ( A  ;  0  0  0) ( A   A  ;   1   3   4)      0.48 (   1   3   4)
+  A      134   7932.488508   ( A  ;  0  0  0) ( A   A  ;   0   5   2)      0.55 (   0   5   2)
+  A      135   8019.502474   ( A  ;  0  0  0) ( A   A  ;   5   1   0)      0.77 (   5   1   0)
+  A      136   8053.751368   ( A  ;  0  0  0) ( A   A  ;   2   2   4)      0.59 (   2   2   4)
+  A      137   8114.596003   ( A  ;  0  0  0) ( A   A  ;   4   1   2)      0.62 (   4   1   2)
+  A      138   8244.447969   ( A  ;  0  0  0) ( A   A  ;   5   1   0)      0.88 (   5   1   0)
+  A      139   8301.363282   ( A  ;  0  0  0) ( A   A  ;   2   3   2)      0.71 (   2   3   2)
+  A      140   8476.526750   ( A  ;  0  0  0) ( A   A  ;   3   3   0)      0.97 (   3   3   0)
+
+
+ Memory Report:
+ Active Arrays                                        size (Gb)
+ trove%Amatrho                                         0.1610E-02                
+ trove%dAmatrho                                        0.4829E-02                
+ trove%Bmatrho                                         0.1610E-02                
+ trove%dBmatrho                                        0.3219E-02                
+ trove%b0                                              0.5366E-03                
+ trove%db0                                             0.1610E-02                
+ trove%qwforce                                         0.5366E-03                
+ trove%g_vib%me                                        0.2347E-02                
+ trove%g_rot%me                                        0.2347E-02                
+ trove%g_cor%me                                        0.2347E-02                
+ trove%poten%me                                        0.2608E-03                
+ me%fields%coeff                                       0.3996E-02                
+ Total memory   =                                     0.02549050 Gb
+ Maximal memory =                                     0.07600899 Gb (        100000.0)
+
+ (       42 arrays contributing less than 1% are not shown)
+
+
+              Timing data at 2015/10/28 05:07:38
+
+                                            Total time (seconds)  Self time (seconds)
+ Timer                               Calls  --------------------  -------------------
+ -----                               -----       Real       CPU        Real       CPU
+
+ TROVE                                  1.        0.8       7.3         0.1       0.1
+ FLcheck_point_Hamiltonian              3.        0.3       0.3         0.3       0.3
+ Primitive matelements                  1.        0.0       0.0         0.0       0.0
+ Contracted matelements-class           1.        0.4       6.4         0.4       6.4
+ Contracted Hamiltonian                 1.        0.0       0.5         0.0       0.4
+ Calculating the Hamiltonian ma         1.        0.0       0.1         0.0       0.0
+
+ (  5 timers contributing less than 1% are not shown)
+
+
+End of TROVE
